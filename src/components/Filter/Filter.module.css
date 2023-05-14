@@ -1,0 +1,18 @@
+.label_filter {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: rgb(121, 6, 96);
+    margin-bottom: 10px;
+    
+}
+.label_name {
+    font-size: 14px;
+    color: rgb(121, 6, 96);
+    margin-bottom: 4px;
+}
+.filter_input {
+    padding: 8px 4px;
+    border-image: linear-gradient(to top, transparent, rgb(121, 6, 96)) 50;
+    outline: none;
+}
