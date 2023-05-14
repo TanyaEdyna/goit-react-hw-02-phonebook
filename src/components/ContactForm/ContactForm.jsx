@@ -5,7 +5,7 @@ import css from "./ContactForm.module.css";
 export class ContactForm extends Component {
     state = {
     contacts: [],
-    contactName: '',
+    name: '',
     number: '',
     };
 
@@ -15,15 +15,24 @@ export class ContactForm extends Component {
         });
     };
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        const { contactName, number } = this.state;
-        const { onSubmit } = this.props;
-        onSubmit({ contactName, number });
-        this.setState({ contactName: '', number: '' })
-    };
+   handleSubmit = (event) => {
+    event.preventDefault();
+    const { name, number, contacts } = this.state;
+    const { onSubmit } = this.props;
+
+    // Перевірка, чи вже існує контакт з таким самим ім'ям або номером телефону
+     const isContactExists = contacts.some(contact => contact.name === name || contact.number === number);
+    if (isContactExists) {
+        alert('Contact already exists!');
+        return;
+    }
+
+
+    onSubmit({ name, number });
+    this.setState({ name: '', number: '' });
+};
     render() {
-        const { contactName, number } = this.state;
+        const { name, number } = this.state;
         return (
         <section className={css.form_section}>
         
@@ -31,11 +40,11 @@ export class ContactForm extends Component {
             <input
                 className={css.input}
                 type="text"
-                name="contactName"
+                name="name"
                 placeholder="Name"
                 pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                value={contactName}
+                value={name}
                 onChange={this.handleChange}  
                 required
             
