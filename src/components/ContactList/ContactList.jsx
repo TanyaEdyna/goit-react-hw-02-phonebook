@@ -16,7 +16,8 @@ const ContactList = ({ contacts, filter, deleteContact }) => {
       ))}
     </ul>
   );
-};
+}; 
+
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
