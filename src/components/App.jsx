@@ -12,12 +12,12 @@ export class App extends Component {
     filter: "",
   };
 
-  handleFormSubmit = ({ contactName, number }) => {
-    const newContact = { contactName, number, id: nanoid() };
+  handleFormSubmit = ({ name, number }) => {
+    const newContact = { name, number, id: nanoid() };
     const { contacts } = this.state;
 
-    if (contacts.some((contact) => contactName === contact.contactName)) {
-      alert(`${contactName} is already in contacts`);
+    if (contacts.some((contact) => name === contact.name)) {
+      alert(`${name} is already in contacts`);
       return;
     }
 
