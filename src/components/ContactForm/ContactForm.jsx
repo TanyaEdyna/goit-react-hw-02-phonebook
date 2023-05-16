@@ -4,7 +4,7 @@ import css from "./ContactForm.module.css";
 
 export class ContactForm extends Component {
     state = {
-    contacts: [],
+    // contacts: [],
     name: '',
     number: '',
     };
@@ -17,8 +17,8 @@ export class ContactForm extends Component {
 
    handleSubmit = (event) => {
     event.preventDefault();
-    const { name, number, contacts } = this.state;
-    const { onSubmit } = this.props;
+    const { name, number } = this.state;
+    const { onSubmit, contacts } = this.props;
 
     // Перевірка, чи вже існує контакт з таким самим ім'ям або номером телефону
      const isContactExists = contacts.some(contact => contact.name === name || contact.number === number);
@@ -28,7 +28,7 @@ export class ContactForm extends Component {
     }
 
 
-    onSubmit({ name, number });
+    onSubmit ({ name, number });
     this.setState({ name: '', number: '' });
 };
     render() {

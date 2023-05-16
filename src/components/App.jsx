@@ -27,17 +27,19 @@ export class App extends Component {
   };
 
   handleChangeFilter = (event) => {
-    this.setState({ filter: event.target.value });
+    this.setState({ filter: event.target.value });//змінює значення вл-ті filter(event.target.value  - те що вводить користувач в полі)
+    console.log(event.target.value)
   };
 
   deleteContact = (id) => {
     this.setState((prevState) => ({
-      contacts: prevState.contacts.filter((contact) => contact.id !== id),
+      contacts: prevState.contacts.filter((contact) => contact.id !== id), //створюється новий масив контактів де видалені контакти с певними id
     }));
   };
+ 
 
   render() {
-    const { filter, contacts } = this.state;
+    const { filter, contacts} = this.state;
     return (
       <div className={css.form_block}>
         <h1 className={css.title}>Phonebook</h1>
