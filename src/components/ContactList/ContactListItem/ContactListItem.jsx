@@ -4,7 +4,7 @@ import css from "./ContactListItem.module.css"
 
 const ContactListItem = ({id, name, number, deleteContact}) => {
     return (
-        <li className={css.contact_item} key={id}>
+        <li className={css.contact_item}>
             <p className={css.contact_name}>{name}: {number}</p>
             <button className={css.contact_btn_delete} type="button" onClick={() => deleteContact(id)}>Dlt</button>
         </li>
