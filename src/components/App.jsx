@@ -36,10 +36,15 @@ export class App extends Component {
       contacts: prevState.contacts.filter((contact) => contact.id !== id), //створюється новий масив контактів де видалені контакти с певними id
     }));
   };
+  getFilteredContacts = (contacts, filter) => {
+    return contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
  
 
   render() {
-    const { filter, contacts} = this.state;
+    const { contacts, filter} = this.state;
     return (
       <div className={css.form_block}>
         <h1 className={css.title}>Phonebook</h1>
@@ -51,7 +56,7 @@ export class App extends Component {
           filter={filter}
           onChange={this.handleChangeFilter} />
         <ContactList
-          contacts={contacts}
+          contacts={this.getFilteredContacts(contacts, filter)}
           filter={filter}
           deleteContact={this.deleteContact} />
       </div>
