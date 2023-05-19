@@ -57,7 +57,6 @@ export class App extends Component {
           onChange={this.handleChangeFilter} />
         <ContactList
           contacts={this.getFilteredContacts(contacts, filter)}
-          filter={filter}
           deleteContact={this.deleteContact} />
       </div>
     );
